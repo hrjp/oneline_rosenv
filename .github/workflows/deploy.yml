@@ -8,6 +8,11 @@ on:
 
 jobs:
   build-and-deploy:
+    permissions:
+      contents: write # リポジトリへの書き込み権限を付与
+      pages: write # GitHub Pagesへの書き込み権限を付与
+      id-token: write # OIDCトークンを要求する場合に必要
+
     runs-on: ubuntu-latest
 
     steps:
