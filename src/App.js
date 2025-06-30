@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -12,7 +10,6 @@ function App() {
   const [shareFolder, setShareFolder] = useState('');
   const [cudaVersion, setCudaVersion] = useState('none');
   const [copyText, setCopyText] = useState('Copy');
-  const [showOptions, setShowOptions] = useState(false);
 
   const rosOptions = ['Melodic', 'Noetic', 'Humble', 'Jazzy'];
   const cudaOptions = ['none', '12.6.3', '12.8.1', '12.9.1'];
@@ -63,30 +60,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>ROS Docker Environment Generator</h1>
-        <div className="options-menu">
-          <button onClick={() => setShowOptions(!showOptions)} className="options-button">Options</button>
-          {showOptions && (
-            <div className="options-dropdown">
-              <div className="selector">
-                <h2>Options</h2>
-                <div className="options">
-                  <label>
-                    <input type="checkbox" checked={gpu} onChange={() => setGpu(!gpu)} />
-                    GPU Enabled
-                  </label>
-                  <label>
-                    <input type="checkbox" checked={remove} onChange={() => setRemove(!remove)} />
-                    Remove on Exit
-                  </label>
-                  <label>
-                    <input type="checkbox" checked={netHost} onChange={() => setNetHost(!netHost)} />
-                    Use --net=host
-                  </label>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
       </header>
       <div className="selector-container">
         <div className="selector">
@@ -112,6 +85,23 @@ function App() {
               <option key={option} value={option}>{option}</option>
             ))}
           </select>
+        </div>
+        <div className="selector">
+          <h2>Options</h2>
+          <div className="options">
+            <label>
+              <input type="checkbox" checked={gpu} onChange={() => setGpu(!gpu)} />
+              GPU Enabled
+            </label>
+            <label>
+              <input type="checkbox" checked={remove} onChange={() => setRemove(!remove)} />
+              Remove on Exit
+            </label>
+            <label>
+              <input type="checkbox" checked={netHost} onChange={() => setNetHost(!netHost)} />
+              Use --net=host
+            </label>
+          </div>
         </div>
       </div>
       <div className="command-container">
