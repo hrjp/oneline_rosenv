@@ -1,4 +1,3 @@
-
 .App {
   text-align: center;
   font-family: sans-serif;
@@ -78,27 +77,16 @@ input[type="text"], select {
   word-wrap: break-word;
 }
 
-.options-menu {
-  position: relative;
-}
-
-.options-button {
+.language-switcher button {
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
+  margin-left: 5px;
 }
 
-.options-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  z-index: 1;
+.language-switcher button.active {
+  background-color: #0056b3;
 }
-

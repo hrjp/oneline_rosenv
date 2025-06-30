@@ -1,5 +1,8 @@
+
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import translations from './translations';
 
 function App() {
   const [gpu, setGpu] = useState(false);
@@ -10,6 +13,9 @@ function App() {
   const [shareFolder, setShareFolder] = useState('');
   const [cudaVersion, setCudaVersion] = useState('none');
   const [copyText, setCopyText] = useState('Copy');
+  const [language, setLanguage] = useState('en');
+
+  const t = translations[language];
 
   const rosOptions = ['Melodic', 'Noetic', 'Foxy', 'Humble', 'Jazzy'];
   const cudaVersionsMap = {
@@ -70,19 +76,23 @@ function App() {
   const handleCopy = () => {
     const command = getCommand();
     navigator.clipboard.writeText(command);
-    setCopyText('Copied!');
-    setTimeout(() => setCopyText('Copy'), 2000);
+    setCopyText(t.copied);
+    setTimeout(() => setCopyText(t.copy), 2000);
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>ROS Docker Environment Generator</h1>
+        <h1>{t.title}</h1>
+        <div className="language-switcher">
+          <button onClick={() => setLanguage('en')} className={language === 'en' ? 'active' : ''}>English</button>
+          <button onClick={() => setLanguage('ja')} className={language === 'ja' ? 'active' : ''}>日本語</button>
+        </div>
       </header>
       <div className="selector-container">
         <div className="selector">
-          <h2>ROS Version</h2>
-          <p className="description">Select the desired ROS distribution.</p>
+          <h2>{t.rosVersion}</h2>
+          <p className="description">{t.rosVersionDescription}</p>
           <select value={rosVersion} onChange={(e) => setRosVersion(e.target.value)}>
             {rosOptions.map(option => (
               <option key={option} value={option}>{option}</option>
@@ -90,18 +100,18 @@ function App() {
           </select>
         </div>
         <div className="selector">
-          <h2>Container Name</h2>
-          <p className="description">Specify a name for your Docker container.</p>
+          <h2>{t.containerName}</h2>
+          <p className="description">{t.containerNameDescription}</p>
           <input type="text" value={containerName} onChange={(e) => setContainerName(e.target.value)} disabled={remove} />
         </div>
         <div className="selector">
-          <h2>Share Folder</h2>
-          <p className="description">Enter the absolute path to a folder to share with the container.</p>
+          <h2>{t.shareFolder}</h2>
+          <p className="description">{t.shareFolderDescription}</p>
           <input type="text" value={shareFolder} onChange={(e) => setShareFolder(e.target.value)} />
         </div>
         <div className="selector">
-          <h2>CUDA Version</h2>
-          <p className="description">Choose the CUDA version for GPU support.</p>
+          <h2>{t.cudaVersion}</h2>
+          <p className="description">{t.cudaVersionDescription}</p>
           <select value={cudaVersion} onChange={(e) => setCudaVersion(e.target.value)}>
             {cudaVersionsMap[rosVersion].map(option => (
               <option key={option} value={option}>{option}</option>
@@ -109,26 +119,26 @@ function App() {
           </select>
         </div>
         <div className="selector">
-          <h2>Options</h2>
-          <p className="description">Additional Docker run options.</p>
+          <h2>{t.options}</h2>
+          <p className="description">{t.optionsDescription}</p>
           <div className="options">
             <label>
               <input type="checkbox" checked={gpu} onChange={() => setGpu(!gpu)} disabled={cudaVersion !== 'none'} />
-              GPU Enabled
+              {t.gpuEnabled}
             </label>
             <label>
               <input type="checkbox" checked={remove} onChange={() => setRemove(!remove)} />
-              Remove on Exit
+              {t.removeOnExit}
             </label>
             <label>
               <input type="checkbox" checked={netHost} onChange={() => setNetHost(!netHost)} />
-              Use --net=host
+              {t.useNetHost}
             </label>
           </div>
         </div>
       </div>
       <div className="command-container">
-        <h2>Generated Command:</h2>
+        <h2>{t.generatedCommand}</h2>
         <pre className="command-box">{getCommand()}</pre>
         <button onClick={handleCopy}>{copyText}</button>
       </div>
