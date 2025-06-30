@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# oneline_rosenv
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`oneline_rosenv`は、ROS (Robot Operating System) のDocker環境を簡単に生成するためのウェブアプリケーションです。GitHub Pagesで公開されており、直感的なUIを通じて、必要なROSバージョンやCUDAバージョン、その他のオプションを選択するだけで、対応する`docker run`コマンドを生成できます。
 
-## Available Scripts
+## 公開URL
 
-In the project directory, you can run:
+このアプリケーションは以下のURLで公開されています。
 
-### `npm start`
+[https://hrjp.github.io/oneline_rosenv](https://hrjp.github.io/oneline_rosenv)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 機能
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **ROSバージョン選択**: Melodic, Noetic, Foxy, Humble, Jazzyなど、主要なROSディストリビューションから選択できます。
+- **CUDAバージョン選択**: 選択したROSバージョンに基づいて、利用可能なCUDAバージョンが動的に表示されます。GPUサポートが必要な場合に選択します。
+- **コンテナ名**: 生成されるDockerコンテナの名前を自動で提案し、必要に応じて変更できます。
+- **共有フォルダ**: ホストマシンとコンテナ間でファイルを共有するためのパスを指定できます。
+- **追加オプション**: GPU有効化、コンテナ終了時の自動削除、ホストネットワークの使用など、追加のDocker実行オプションを簡単に切り替えられます。
+- **コマンドコピー機能**: 生成された`docker run`コマンドをワンクリックでクリップボードにコピーできます。
+- **多言語対応**: 英語と日本語の表示を切り替えることができます。
 
-### `npm test`
+## 使い方
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  上記の公開URLにアクセスします。
+2.  ウェブサイトのUIで、希望するROSバージョン、CUDAバージョン、コンテナ名、共有フォルダ、その他のオプションを選択します。
+3.  選択内容に基づいて、リアルタイムで`docker run`コマンドが生成されます。
+4.  「Copy」ボタンをクリックして、生成されたコマンドをコピーします。
+5.  コピーしたコマンドをターミナルに貼り付けて実行することで、設定したROS Docker環境を起動できます。
 
-### `npm run build`
+## 開発について
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+このプロジェクトはReactで開発されており、GitHub Actionsを使用してGitHub Pagesに自動デプロイされます。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ローカルでの実行
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+プロジェクトをローカルで実行するには、以下の手順に従ってください。
 
-### `npm run eject`
+1.  リポジトリをクローンします。
+    ```bash
+    git clone https://github.com/hrjp/oneline_rosenv.git
+    cd oneline_rosenv
+    ```
+2.  依存関係をインストールします。
+    ```bash
+    npm install
+    ```
+3.  開発サーバーを起動します。
+    ```bash
+    npm start
+    ```
+    ブラウザで `http://localhost:3000` を開くと、アプリケーションが表示されます。
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### デプロイ
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`master`ブランチにプッシュすると、GitHub Actionsが自動的にビルドとデプロイを行います。
