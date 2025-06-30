@@ -47,7 +47,7 @@ function App() {
   }, [remove]);
 
   const getCommand = () => {
-    let command = 'docker run -it';
+    let command = 'xhost +local: && docker run -it';
     if (gpu) command += ' --gpus all';
     if (remove) command += ' --rm';
     if (netHost) command += ' --net=host';
