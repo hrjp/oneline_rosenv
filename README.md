@@ -1,3 +1,5 @@
+[![pages-build-deployment](https://github.com/hrjp/oneline_rosenv/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hrjp/oneline_rosenv/actions/workflows/pages/pages-build-deployment)
+[![Deploy to GitHub Pages](https://github.com/hrjp/oneline_rosenv/actions/workflows/deploy.yml/badge.svg)](https://github.com/hrjp/oneline_rosenv/actions/workflows/deploy.yml)
 # oneline_rosenv
 
 `oneline_rosenv`は、ROS (Robot Operating System) のDocker環境を簡単に生成するためのウェブアプリケーションです。GitHub Pagesで公開されており、直感的なUIを通じて、必要なROSバージョンやCUDAバージョン、その他のオプションを選択するだけで、対応する`docker run`コマンドを生成できます。
