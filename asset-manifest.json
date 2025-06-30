@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/oneline_rosenv/static/css/main.e6e0a5b6.css",
-    "main.js": "/oneline_rosenv/static/js/main.27544235.js",
+    "main.js": "/oneline_rosenv/static/js/main.94114dab.js",
     "index.html": "/oneline_rosenv/index.html",
     "main.e6e0a5b6.css.map": "/oneline_rosenv/static/css/main.e6e0a5b6.css.map",
-    "main.27544235.js.map": "/oneline_rosenv/static/js/main.27544235.js.map"
+    "main.94114dab.js.map": "/oneline_rosenv/static/js/main.94114dab.js.map"
   },
   "entrypoints": [
     "static/css/main.e6e0a5b6.css",
-    "static/js/main.27544235.js"
+    "static/js/main.94114dab.js"
   ]
 }
