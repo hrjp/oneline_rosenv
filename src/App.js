@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -14,7 +12,13 @@ function App() {
   const [copyText, setCopyText] = useState('Copy');
 
   const rosOptions = ['Melodic', 'Noetic', 'Foxy', 'Humble', 'Jazzy'];
-  const cudaOptions = ['none', '12.6.3', '12.8.1', '12.9.1'];
+  const cudaVersionsMap = {
+    Melodic: ['none', '11.0.3', '11.1.1', '11.2.2', '11.3.1', '11.4.2'],
+    Noetic: ['none', '12.4.1', '12.5.1', '12.6.3', '12.8.1', '12.9.1'],
+    Foxy: ['none', '12.4.1', '12.5.1', '12.6.3', '12.8.1', '12.9.1'],
+    Humble: ['none', '12.4.1', '12.5.1', '12.6.3', '12.8.1', '12.9.1'],
+    Jazzy: ['none', '12.6.3', '12.8.1', '12.9.1'],
+  };
 
   useEffect(() => {
     const lowerRosVersion = rosVersion.toLowerCase();
@@ -23,6 +27,7 @@ function App() {
     } else {
       setContainerName(`ros2_${lowerRosVersion}`);
     }
+    setCudaVersion('none'); // Reset CUDA version when ROS version changes
   }, [rosVersion]);
 
   useEffect(() => {
@@ -98,7 +103,7 @@ function App() {
           <h2>CUDA Version</h2>
           <p className="description">Choose the CUDA version for GPU support.</p>
           <select value={cudaVersion} onChange={(e) => setCudaVersion(e.target.value)}>
-            {cudaOptions.map(option => (
+            {cudaVersionsMap[rosVersion].map(option => (
               <option key={option} value={option}>{option}</option>
             ))}
           </select>
