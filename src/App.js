@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -15,7 +17,12 @@ function App() {
   const cudaOptions = ['none', '12.6.3', '12.8.1', '12.9.1'];
 
   useEffect(() => {
-    setContainerName(`ros_${rosVersion.toLowerCase()}`);
+    const lowerRosVersion = rosVersion.toLowerCase();
+    if (['Melodic', 'Noetic'].includes(rosVersion)) {
+      setContainerName(`ros_${lowerRosVersion}`);
+    } else {
+      setContainerName(`ros2_${lowerRosVersion}`);
+    }
   }, [rosVersion]);
 
   useEffect(() => {
