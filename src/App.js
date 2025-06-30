@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Docker Run Command Generator</h1>
+        <h1>ROS Docker Environment Generator</h1>
       </header>
       <div className="selector-container">
         <div className="selector">
