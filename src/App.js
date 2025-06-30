@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -19,6 +17,12 @@ function App() {
   useEffect(() => {
     setContainerName(`ros_${rosVersion.toLowerCase()}`);
   }, [rosVersion]);
+
+  useEffect(() => {
+    if (cudaVersion !== 'none') {
+      setGpu(true);
+    }
+  }, [cudaVersion]);
 
   const getCommand = () => {
     let command = 'docker run -it';
@@ -97,7 +101,7 @@ function App() {
           <p className="description">Additional Docker run options.</p>
           <div className="options">
             <label>
-              <input type="checkbox" checked={gpu} onChange={() => setGpu(!gpu)} />
+              <input type="checkbox" checked={gpu} onChange={() => setGpu(!gpu)} disabled={cudaVersion !== 'none'} />
               GPU Enabled
             </label>
             <label>
