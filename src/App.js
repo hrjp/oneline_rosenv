@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import translations from './translations';
@@ -41,6 +39,12 @@ function App() {
       setGpu(true);
     }
   }, [cudaVersion]);
+
+  useEffect(() => {
+    if (remove) {
+      setContainerName(''); // Clear container name when remove is checked
+    }
+  }, [remove]);
 
   const getCommand = () => {
     let command = 'docker run -it';
