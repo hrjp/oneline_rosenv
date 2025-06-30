@@ -11,7 +11,7 @@ function App() {
   const [cudaVersion, setCudaVersion] = useState('none');
   const [copyText, setCopyText] = useState('Copy');
 
-  const rosOptions = ['Melodic', 'Noetic', 'Humble', 'Jazzy'];
+  const rosOptions = ['Melodic', 'Noetic', 'Foxy', 'Humble', 'Jazzy'];
   const cudaOptions = ['none', '12.6.3', '12.8.1', '12.9.1'];
 
   useEffect(() => {
