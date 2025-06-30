@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -64,6 +66,7 @@ function App() {
       <div className="selector-container">
         <div className="selector">
           <h2>ROS Version</h2>
+          <p className="description">Select the desired ROS distribution.</p>
           <select value={rosVersion} onChange={(e) => setRosVersion(e.target.value)}>
             {rosOptions.map(option => (
               <option key={option} value={option}>{option}</option>
@@ -72,14 +75,17 @@ function App() {
         </div>
         <div className="selector">
           <h2>Container Name</h2>
+          <p className="description">Specify a name for your Docker container.</p>
           <input type="text" value={containerName} onChange={(e) => setContainerName(e.target.value)} disabled={remove} />
         </div>
         <div className="selector">
           <h2>Share Folder</h2>
+          <p className="description">Enter the absolute path to a folder to share with the container.</p>
           <input type="text" value={shareFolder} onChange={(e) => setShareFolder(e.target.value)} />
         </div>
         <div className="selector">
           <h2>CUDA Version</h2>
+          <p className="description">Choose the CUDA version for GPU support.</p>
           <select value={cudaVersion} onChange={(e) => setCudaVersion(e.target.value)}>
             {cudaOptions.map(option => (
               <option key={option} value={option}>{option}</option>
@@ -88,6 +94,7 @@ function App() {
         </div>
         <div className="selector">
           <h2>Options</h2>
+          <p className="description">Additional Docker run options.</p>
           <div className="options">
             <label>
               <input type="checkbox" checked={gpu} onChange={() => setGpu(!gpu)} />

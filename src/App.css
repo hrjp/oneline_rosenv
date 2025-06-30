@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   font-family: sans-serif;
@@ -32,6 +33,12 @@
 
 .selector h2 {
   margin-top: 0;
+}
+
+.selector .description {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 15px;
 }
 
 .options {
@@ -94,3 +101,4 @@ input[type="text"], select {
   padding: 10px;
   z-index: 1;
 }
+
